@@ -1,1 +1,5 @@
-<!
+.sidebar-left {
+    margin-left: -25%;
+    padding-left: 0%;
+    float: left;
+  }
