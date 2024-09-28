@@ -1,6 +1,5 @@
 # Импорт встроенной библиотеки для работы веб-сервера
 from http.server import BaseHTTPRequestHandler, HTTPServer
-import time
 
 # Для начала определим настройки запуска
 hostName = "localhost"  # Адрес для доступа по сети
@@ -40,7 +39,3 @@ if __name__ == "__main__":
     # Корректная остановка веб-сервера, чтобы он освободил адрес и порт в сети, которые занимал
     webServer.server_close()
     print("Server stopped.")
-
-# with open("../html/contacts.html", encoding="utf-8") as file:
-#     content = file.read()
-#     print(content)
