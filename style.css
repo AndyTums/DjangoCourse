@@ -1,1 +1,10 @@
-<!
+.sidebar-left {
+    margin-left: -25%;
+    padding-left: 0%;
+    float: left;
+  }
+ .absolut-position {
+    position: absolute;
+    top: 900px;
+    left: 15px;
+  }
