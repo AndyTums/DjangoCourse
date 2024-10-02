@@ -23,5 +23,6 @@ def user_contact(request):
         mail = request.POST.get("name")
         message = request.POST.get("message")
 
-        return HttpResponse(f"Спасибо! На ваш mail {mail} отправлена сообщение о регистрации вашего обращения!")
+        return render(request, "user_contact.html")
+        # return HttpResponse(f"Заявка отправлена на почту!")
     return render(request, "contacts.html")

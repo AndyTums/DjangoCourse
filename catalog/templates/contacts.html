@@ -82,26 +82,29 @@
         <div class="row" style="margin-top: 100px;">
             <div class="col-1"></div>
             <div class="col-4">
-                <div class="mb-3">
+                <form method="post" action="">
                     {% csrf_token %}
-                    <label for="exampleFormControlInput1" class="form-label">Адрес электронной почты</label>
-                    <input type="email" class="form-control mb-2" id="exampleFormControlInput1"
-                           placeholder="name@example.com" formmethod="post" formaction="">
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Адрес электронной почты</label>
+                        <input type="email" class="form-control mb-2" id="exampleFormControlInput1"
+                               placeholder="name@example.com">
 
-                    <label for="inputPassword5" class="form-label">Пароль</label>
-                    <input type="password" id="inputPassword5" class="form-control"
-                           aria-describedby="passwordHelpBlock">
-                    <div id="passwordHelpBlock" class="form-text">
-                        Ваш пароль должен состоять из 8-20 символов, содержать буквы и цифры и не должен содержать
-                        пробелов, специальных символов или эмодзи.
+                        <label for="inputPassword5" class="form-label">Пароль</label>
+                        <input type="password" id="inputPassword5" class="form-control"
+                               aria-describedby="passwordHelpBlock">
+                        <div id="passwordHelpBlock" class="form-text">
+                            Ваш пароль должен состоять из 8-20 символов, содержать буквы и цифры и не должен содержать
+                            пробелов, специальных символов или эмодзи.
+                        </div>
                     </div>
-                </div>
-                <div class="mb-3">
-                    <label for="exampleFormControlTextarea1" class="form-label">Сообщение</label>
-                    <textarea class="form-control mb-3" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    <div class="mb-3">
+                        <label for="exampleFormControlTextarea1" class="form-label">Сообщение</label>
+                        <textarea class="form-control mb-3" id="exampleFormControlTextarea1" rows="3"></textarea>
 
-                    <button type="submit" class="btn btn-primary">Отправить</button>
-                </div>
+                        <button type="submit" class="btn btn-primary">Отправить</button>
+
+                    </div>
+                </form>
             </div>
             <div class="col-1"></div>
             <div class="col-5">

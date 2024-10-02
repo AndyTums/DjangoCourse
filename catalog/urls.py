@@ -9,6 +9,6 @@ urlpatterns = [
     path('category/', category, name='category'),
     path('order/', order, name='category'),
     path('contact/', contact, name='category'),
-    path('user_contact/', user_contact, name='user_contact'),
+    path('contact/', user_contact, name='user_contact'),
 
 ]
