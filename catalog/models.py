@@ -15,7 +15,7 @@ class Category(models.Model):
         ordering = ["name", ]
 
     def __str__(self):
-        return f"Категория: {self.name}."
+        return self.name
 
 
 class Product(models.Model):
@@ -38,8 +38,7 @@ class Product(models.Model):
                                  help_text="Введите категорию продукта",
                                  related_name="products")
 
-    price = models.IntegerField(max_length=50,
-                                verbose_name="Цена",
+    price = models.IntegerField(verbose_name="Цена",
                                 help_text="Введите цену продукта")
 
     created_at = models.DateField(blank=True, null=True,
@@ -51,8 +50,8 @@ class Product(models.Model):
                                   help_text="Введите дату изменения продукта")
 
     class Meta:
-        verbose_name = "Собака"
-        verbose_name_plural = "Собаки"
+        verbose_name = "Продукт"
+        verbose_name_plural = "Продукты"
         ordering = ["name", "price"]
 
     def __str__(self):
