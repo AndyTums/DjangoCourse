@@ -1,0 +1,23 @@
+[
+  {
+    "model": "catalog.category",
+    "pk": 1,
+    "fields": {
+      "name": "Овощи",
+      "description": "Тут будут овощи"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 1,
+    "fields": {
+      "name": "Картошка",
+      "description": "Твердая, но вкусная",
+      "image": "catalog/photo/картошка-11628744.webp",
+      "category": 1,
+      "price": 150,
+      "created_at": "2024-09-09",
+      "updated_at": "2024-10-09"
+    }
+  }
+]
