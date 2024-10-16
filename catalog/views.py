@@ -1,9 +1,18 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from catalog.models import Product, Category
 
 
 def home(request):
-    return render(request, 'home_page.html')
+    products = Product.objects.all()
+    context = {"products": products}
+    return render(request, "home_page.html", context)
+
+
+def product_detail(request, product_id):
+    product = Product.objects.get(id=product_id)
+    context = {"product": product}
+    return render(request, "product_detail.html", context)
 
 
 def category(request):

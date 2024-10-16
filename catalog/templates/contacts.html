@@ -1,80 +1,5 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Моя страница</title>
-    <!--    <link href="/css/bootstrap.min.css" rel="stylesheet"/>-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
-    <link href="/docs/5.3/assets/brand/bootstrap-logo.svg" type="image/x-icon" sizes="48x48">
-
-</head>
-<body>
-<div class="row">
-    <div class="col-2 bg-dark vh-100">
-        <nav class="navbar me-5">
-            <div class="container-fluid flex-column me-3">
-                <a class="navbar-brand fs-3 fw-bold text-light" href="http://127.0.0.1:8000">
-                    <img src="https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo.svg" alt="Logo" width="45"
-                         height="35" class="align-text-top" style="margin-left: -50px">
-                    Меню
-                </a>
-                <hr>
-                <ul class="nav flex-column sidebar-left">
-                    <li class="nav-item">
-                        <a class="nav-link active fs-5 text-light" aria-current="page" href="http://127.0.0.1:8000">
-                            <img src="https://img.icons8.com/?size=100&id=2797&format=png&color=FFFFFF" alt="home"
-                                 width="20" height="20"
-                                 class="align-text-top me-2 my-1">
-                            Главная
-                        </a>
-                    <li class="nav-item">
-                        <a class="nav-link active fs-5 text-light" aria-current="page"
-                           href="http://127.0.0.1:8000/category/">
-                            <img src="https://img.icons8.com/?size=100&id=46218&format=png&color=FFFFFF"
-                                 alt="categories" width="20" height="20"
-                                 class="align-text-top me-2 my-1">
-                            Категория
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active fs-5 text-light" aria-current="page"
-                           href="http://127.0.0.1:8000/order/">
-                            <img src="https://img.icons8.com/?size=100&id=42424&format=png&color=FFFFFF" alt="orders"
-                                 width="20" height="20"
-                                 class="align-text-top me-2 my-1">
-                            Заказы
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active fs-5 text-light" aria-current="page"
-                           href="http://127.0.0.1:8000/contact/">
-                            <img src="https://img.icons8.com/?size=100&id=9730&format=png&color=FFFFFF" alt="contacts"
-                                 width="20" height="20"
-                                 class="align-text-top me-2 my-1">
-                            Контакты
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <hr>
-            <div class="dropup-center dropup" style="margin-top: 650px; margin-right: 50px;">
-                <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
-                   id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="https://img.freepik.com/premium-photo/picture-showcasing-a-cat-in-a-sweater-and-scarf_869640-948664.jpg"
-                         alt="" width="32" height="32" class="rounded-circle me-2">
-                    <strong>Пользователь</strong>
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Профиль</a></li>
-                    <li><a class="dropdown-item" href="#">Выход</a></li>
-                </ul>
-            </div>
-        </nav>
-
-    </div>
+{% extends 'base.html' %}
+{% block content %}
     <div class="col-10">
         <div class="text-center pb-5" style="margin-top: 100px;">
             <h1 class="card-title">Контакты</h1>
@@ -123,11 +48,4 @@
             <div class="col-1"></div>
         </div>
     </div>
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
-
-</body>
-</html>
+{% endblock %}

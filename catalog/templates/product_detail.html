@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load my_tags %}
+{% block content %}
+<div class="col-10">
+    <div class="album py-5t" style="margin-top: 70px;">
+        <div class="container">
+
+            <h3>Информация о товаре:</h3>
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 mt-2">
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img src="{{ product.image | media_filter }}">
+                        <div class="card-body">
+                            <h3 class="mb-3">{{ product.name }}</h3>
+                            <p><span class="fw-bold">Цена:</span>
+                            <span class="fst-italic">{{product.price}}</span></p>
+                            <p><span class="fw-bold">Описание:</span>
+                            <span class="fst-italic">{{product.description}}</span></p>
+                            <p><span class="fw-bold">Категория:</span>
+                            <span class="fst-italic">{{product.category}}</span></p>
+                            <p><span class="fw-bold">Дата добавления:</span>
+                            <span class="fst-italic">{{product.created_at}}</span></p>
+                            <p><span class="fw-bold">Дата последнего обновления:</span>
+                            <span class="fst-italic">
+                                {% if product.updated_at == None%}Отсутствует
+                                {% else %} {{ product.updated_at }}
+                                {%endif%}</span></p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <a href="{% url 'catalog:home' %}">
+                                        <button type="button" class="btn btn-primary">Назад</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
