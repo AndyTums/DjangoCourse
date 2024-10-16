@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load my_tags %}
+{% block content %}
+<div class="col-10">
+    <div class="album py-5t" style="margin-top: 70px;">
+        <div class="container">
+
+            <h3>Информация о товаре:</h3>
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img src="{{ product.image | media_filter }}">
+                        <div class="card-body">
+                            <h3>{{ product.name }}</h3>
+                            <p class="card-text">Цена: {{product.price}}.</p>
+                            <p class="card-text">Описание: {{product.description}}</p>
+                            <p class="card-text">Категория: {{product.category}}</p>
+                            <p class="card-text">Дата добавления: {{product.created_at}}</p>
+                            <p class="card-text">Дата последнего обновления: {% if product.updated_at == None %}Отсутствует{% endif %}</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <a href="{% url 'catalog:home' %}">
+                                        <button type="button" class="btn btn-primary">Назад</button></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

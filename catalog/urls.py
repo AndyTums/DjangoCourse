@@ -1,6 +1,6 @@
 from django.urls import path
 from catalog.apps import CatalogConfig
-from catalog.views import home, category, order, contact, user_contact
+from catalog.views import home, category, order, contact, user_contact, product_detail
 
 app_name = CatalogConfig.name
 
@@ -10,5 +10,6 @@ urlpatterns = [
     path('order/', order, name='category'),
     path('contact/', contact, name='category'),
     path('contact/', user_contact, name='user_contact'),
+    path('product/<int:product_id>/', product_detail, name='product_detail'),
 
 ]
