@@ -9,12 +9,12 @@
     <div class="album py-5t" style="margin-top: 70px;">
         <div class="container">
 
-            <h3>Популярные товары:</h3>
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            <h3>Наши товары:</h3>
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
                 {% for product in products %}
                 <div class="col">
                     <div class="card shadow-sm">
-                        <img src="{{ product.image | media_filter }}">
+                        <img src="{{ product.image | media_filter }}" height="250">
                         <div class="card-body">
                             <h3>{{ product.name }}</h3>
                             <p class="card-text">{{ product.description }}</p>
