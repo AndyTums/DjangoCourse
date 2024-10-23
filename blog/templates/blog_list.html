@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load my_tags %}
+{% block content %}
+<div class="col-10">
+    <div class="text-center" style="margin-top: 70px;">
+        <h5 class="card-title fs-1 pb-2">Мы рады Ваc видеть в нашем сообществе блогеров!</h5>
+        <p class="card-text fs-5">Создавайте, общайтесь, узнавайте - все сделано для Вашего удобства!</p>
+    </div>
+    <div class="album py-5t" style="margin-top: 70px;">
+        <div class="container">
+
+            <h3>Наши блоги</h3>
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
+                {% for product in object_list %}
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img src="{{ blog.image | media_filter }}" height="250">
+                        <div class="card-body">
+                            <h3>{{ product.name }}</h3>
+                            <p class="card-text">{{ product.description }}</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <a href="#">
+                                        <button type="button" class="btn btn-primary">Купить
+                                        </button>
+                                    </a>
+                                    <a href="{% url 'catalog:product_detail' product.id %}">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary">Смотреть</button>
+                                    </a>
+                                </div>
+                                <big class="text-muted">{{ product.price }} р.</big>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
