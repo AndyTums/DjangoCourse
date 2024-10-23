@@ -1,30 +1,32 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from catalog.models import Product, Category
+from django.views.generic import ListView, UpdateView, DetailView, DeleteView
 
 
-def home(request):
-    products = Product.objects.all()
-    context = {"products": products}
-    return render(request, "home_page.html", context)
+class ProductListView(ListView):
+    model = Product
+    template_name = "home_page.html"
 
 
-def product_detail(request, product_id):
-    product = Product.objects.get(id=product_id)
-    context = {"product": product}
-    return render(request, "product_detail.html", context)
+class ProductDetailView(DetailView):
+    model = Product
+    template_name = "product_detail.html"
 
 
-def category(request):
-    return render(request, 'category.html')
+class CategoryListView(ListView):
+    model = Category
+    template_name = "category.html"
 
 
-def order(request):
-    return render(request, 'catalog.html')
+class OrderListView(ListView):
+    model = Product
+    template_name = "catalog.html"
 
 
-def contact(request):
-    return render(request, 'contacts.html')
+class ContactView(ListView):
+    model = Product
+    template_name = "contacts.html"
 
 
 def user_contact(request):
