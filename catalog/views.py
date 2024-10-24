@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from catalog.models import Product, Category
-from django.views.generic import ListView, UpdateView, DetailView, DeleteView
+from django.views.generic import ListView, DetailView,TemplateView
 
 
 class ProductListView(ListView):
@@ -24,7 +24,7 @@ class OrderListView(ListView):
     template_name = "catalog.html"
 
 
-class ContactView(ListView):
+class ContactView(TemplateView):
     model = Product
     template_name = "contacts.html"
 

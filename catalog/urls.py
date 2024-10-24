@@ -10,9 +10,9 @@ app_name = CatalogConfig.name
 urlpatterns = [
     path('', ProductListView.as_view(), name='home'),
     path('category/', CategoryListView.as_view(), name='category'),
-    path('order/', OrderListView.as_view(), name='category'),
-    path('contact/', ContactView.as_view(), name='category'),
-    path('contact/', user_contact, name='user_contact'),
+    path('order/', OrderListView.as_view(), name='order'),
+    path('contact/', ContactView.as_view(), name='contact'),
+    path('contact/user_contact/', user_contact, name='user_contact'),
     path('product/<int:pk>/', ProductDetailView.as_view(), name='product_detail'),
 
 ]
