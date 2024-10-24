@@ -9,21 +9,21 @@
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 mt-2">
                 <div class="col">
                     <div class="card shadow-sm">
-                        <img src="{{ product.image | media_filter }}">
+                        <img src="{{ object.image | media_filter }}">
                         <div class="card-body">
-                            <h3 class="mb-3">{{ product.name }}</h3>
+                            <h3 class="mb-3">{{ object.name }}</h3>
                             <p><span class="fw-bold">Цена:</span>
-                            <span class="fst-italic">{{product.price}}</span></p>
+                            <span class="fst-italic">{{object.price}}</span></p>
                             <p><span class="fw-bold">Описание:</span>
-                            <span class="fst-italic">{{product.description}}</span></p>
+                            <span class="fst-italic">{{object.description}}</span></p>
                             <p><span class="fw-bold">Категория:</span>
-                            <span class="fst-italic">{{product.category}}</span></p>
+                            <span class="fst-italic">{{object.category}}</span></p>
                             <p><span class="fw-bold">Дата добавления:</span>
-                            <span class="fst-italic">{{product.created_at}}</span></p>
+                            <span class="fst-italic">{{object.created_at}}</span></p>
                             <p><span class="fw-bold">Дата последнего обновления:</span>
                             <span class="fst-italic">
-                                {% if product.updated_at == None%}Отсутствует
-                                {% else %} {{ product.updated_at }}
+                                {% if object.updated_at == None%}Отсутствует
+                                {% else %} {{ object.updated_at }}
                                 {%endif%}</span></p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
