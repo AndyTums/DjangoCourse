@@ -11,7 +11,7 @@
 
             <h3>Наши товары:</h3>
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
-                {% for product in products %}
+                {% for product in object_list %}
                 <div class="col">
                     <div class="card shadow-sm">
                         <img src="{{ product.image | media_filter }}" height="250">
