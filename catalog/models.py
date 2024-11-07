@@ -1,3 +1,5 @@
+from django.utils import timezone
+
 from django.db import models
 
 
@@ -20,34 +22,28 @@ class Category(models.Model):
 
 class Product(models.Model):
     name = models.CharField(max_length=50,
-                            verbose_name="Наименование",
-                            help_text="Введите наименование продукта")
+                            verbose_name="Наименование")
 
-    description = models.TextField(verbose_name="Описание",
-                                   help_text="Введите описание продукта")
+    description = models.TextField(verbose_name="Описание")
 
     image = models.ImageField(upload_to="catalog/photo",
                               blank=True, null=True,
-                              verbose_name="Изображение",
-                              help_text="Загрузите изображение")
+                              verbose_name="Изображение")
 
     category = models.ForeignKey(Category,
                                  on_delete=models.SET_NULL,
                                  blank=True, null=True,
                                  verbose_name="Категория",
-                                 help_text="Введите категорию продукта",
                                  related_name="products")
 
-    price = models.IntegerField(verbose_name="Цена",
-                                help_text="Введите цену продукта")
+    price = models.IntegerField(verbose_name="Цена")
 
     created_at = models.DateField(blank=True, null=True,
-                                  verbose_name="Дата создания",
-                                  help_text="Введите дату добавления продукта")
+                                  verbose_name="Дата создания")
 
     updated_at = models.DateField(blank=True, null=True,
                                   verbose_name="Дата обновления",
-                                  help_text="Введите дату изменения продукта")
+                                  default=timezone.now)
 
     class Meta:
         verbose_name = "Продукт"
