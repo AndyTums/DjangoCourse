@@ -55,17 +55,30 @@
             </ul>
         </div>
         <hr>
-        <div class="dropup-center dropup" style="margin-top: 650px; margin-right: 50px;">
+        <div class="dropup-center dropup" style="margin-top: 600px; margin-right: 30px;">
             <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
                id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                <img src="https://img.freepik.com/premium-photo/picture-showcasing-a-cat-in-a-sweater-and-scarf_869640-948664.jpg"
+                {% if user.is_authenticated %}
+                <img src={{user.photo}}
                      alt="" width="32" height="32" class="rounded-circle me-2">
-                <strong>Пользователь</strong>
+                <strong>{{ user.email }}</strong>
+
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Профиль</a></li>
+                    <li><a class="dropdown-item" href="#">Выход</a></li>
+                </ul>
+
+                {% else %}
+                <img src="https://img.icons8.com/?size=100&id=2797&format=png&color=FFFFFF"
+                     alt="" width="32" height="32" class="rounded-circle me-2">
+                <strong>Авторизация</strong>
+
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="{% url 'users:login' %}">Войти</a></li>
+                    <li><a class="dropdown-item" href="#">Зарегистрироваться</a></li>
+                </ul>
+                {% endif %}
             </a>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Профиль</a></li>
-                <li><a class="dropdown-item" href="#">Выход</a></li>
-            </ul>
         </div>
     </nav>
 
