@@ -13,22 +13,29 @@
                         <div class="card-body">
                             <h3 class="mb-3">{{ object.name }}</h3>
                             <p><span class="fw-bold">Цена:</span>
-                            <span class="fst-italic">{{object.price}}</span></p>
+                                <span class="fst-italic">{{object.price}}</span></p>
                             <p><span class="fw-bold">Описание:</span>
-                            <span class="fst-italic">{{object.description}}</span></p>
+                                <span class="fst-italic">{{object.description}}</span></p>
                             <p><span class="fw-bold">Категория:</span>
-                            <span class="fst-italic">{{object.category}}</span></p>
+                                <span class="fst-italic">{{object.category}}</span></p>
                             <p><span class="fw-bold">Дата добавления:</span>
-                            <span class="fst-italic">{{object.created_at}}</span></p>
+                                <span class="fst-italic">{{object.created_at}}</span></p>
                             <p><span class="fw-bold">Дата последнего обновления:</span>
-                            <span class="fst-italic">
+                                <span class="fst-italic">
                                 {% if object.updated_at == None%}Отсутствует
                                 {% else %} {{ object.updated_at }}
                                 {%endif%}</span></p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
                                     <a href="{% url 'catalog:home' %}">
-                                        <button type="button" class="btn btn-primary">Назад</button>
+                                        <button type="button" class="btn btn-primary me-2">Назад</button>
+                                    </a>
+                                    <a href="{% url 'catalog:product_update' product.id %}">
+                                        <button type="button" class="btn btn-secondary me-2">Редактировать</button>
+                                    </a>
+                                    <a href="{% url 'catalog:product_delete' product.id %}">
+                                        <button type="button" class="btn btn-danger">Удалить
+                                        </button>
                                     </a>
                                 </div>
                             </div>
