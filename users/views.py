@@ -1,5 +1,6 @@
+from django.contrib.auth import logout
 from django.core.mail import send_mail
-from django.shortcuts import redirect, get_object_or_404
+from django.shortcuts import redirect, get_object_or_404, render
 from django.urls import reverse_lazy, reverse
 from django.views.generic.edit import CreateView
 from .forms import CustomCreationForm
@@ -33,3 +34,8 @@ def email_verification(request, token):
     user.is_active = True
     user.save()
     return redirect(reverse('users:login'))
+
+
+def user_logout(request):
+    logout(request)
+    return render(request, template_name="home_page.html")
