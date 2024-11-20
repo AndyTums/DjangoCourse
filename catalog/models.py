@@ -2,6 +2,8 @@ from django.utils import timezone
 
 from django.db import models
 
+from users.models import User
+
 
 class Category(models.Model):
     name = models.CharField(max_length=50,
@@ -45,10 +47,15 @@ class Product(models.Model):
                                   verbose_name="Дата обновления",
                                   default=timezone.now)
 
+    owner = models.ForeignKey(User, default=User, verbose_name="Автор добавления продукта", null=True, on_delete=models.SET_NULL)
+
     class Meta:
         verbose_name = "Продукт"
         verbose_name_plural = "Продукты"
         ordering = ["name", "price"]
+        permissions = [
+            ("can_unpublish_product", "Can unpublish product")
+        ]
 
     def __str__(self):
         return f"Продукт {self.name}, цена: {self.price}, дата создания: {self.created_at}, категория: {self.category}"

@@ -1,9 +1,10 @@
+from django.core.exceptions import PermissionDenied
 from django.shortcuts import render
 
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 
-from catalog.forms import ProductForm
+from catalog.forms import ProductForm, ProductModeratorForm
 from catalog.models import Product, Category
 from django.views.generic import ListView, DetailView, TemplateView, CreateView, UpdateView, DeleteView
 
@@ -13,6 +14,15 @@ class ProductUpdateView(LoginRequiredMixin, UpdateView):
     form_class = ProductForm
     template_name = "product_create.html"
     success_url = reverse_lazy('catalog:home')
+
+    def get_form_class(self):
+        user = self.request.user
+        if user == self.object.owner:
+            return ProductForm
+        if user.has_perm('catalog.can_unpublish_product'):
+            return ProductModeratorForm
+        raise PermissionDenied
+
 
 
 class ProductCreateView(LoginRequiredMixin, CreateView):

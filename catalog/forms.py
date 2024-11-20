@@ -6,6 +6,7 @@ from catalog.models import Product
 
 class StyleFormMixin:
     """ Стилизуем форму """
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         for fild_name, fild in self.fields.items():
@@ -36,3 +37,9 @@ class ProductForm(StyleFormMixin, ModelForm):
         description = clean_data.get('description').lower()
         if name and description in list_wrong_worlds:
             raise ValidationError("Поле не может содержать такие слова")
+
+
+class ProductModeratorForm(StyleFormMixin, ModelForm):
+    class Meta:
+        model = Product
+        fields = ['price', 'description', 'name']
