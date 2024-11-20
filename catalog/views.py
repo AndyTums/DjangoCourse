@@ -7,6 +7,9 @@ from django.urls import reverse_lazy
 from catalog.forms import ProductForm, ProductModeratorForm
 from catalog.models import Product, Category
 from django.views.generic import ListView, DetailView, TemplateView, CreateView, UpdateView, DeleteView
+from django.views.decorators.cache import cache_page
+from django.utils.decorators import method_decorator
+from django.core.cache import cache
 
 
 class ProductUpdateView(LoginRequiredMixin, UpdateView):
@@ -22,7 +25,6 @@ class ProductUpdateView(LoginRequiredMixin, UpdateView):
         if user.has_perm('catalog.can_unpublish_product'):
             return ProductModeratorForm
         raise PermissionDenied
-
 
 
 class ProductCreateView(LoginRequiredMixin, CreateView):
@@ -42,7 +44,16 @@ class ProductListView(ListView):
     model = Product
     template_name = "home_page.html"
 
+    def get_queryset(self):
+        queryset = cache.get('products_queryset')
+        if not queryset:
+            queryset = super().get_queryset()
+            cache.set('products_queryset', queryset, 60 * 15)
 
+        return queryset
+
+
+@method_decorator(cache_page(60 * 15), name='dispatch')
 class ProductDetailView(DetailView):
     model = Product
     template_name = "product_detail.html"
