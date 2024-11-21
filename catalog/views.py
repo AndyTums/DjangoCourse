@@ -7,6 +7,8 @@ from django.urls import reverse_lazy
 from catalog.forms import ProductForm, ProductModeratorForm
 from catalog.models import Product, Category
 from django.views.generic import ListView, DetailView, TemplateView, CreateView, UpdateView, DeleteView
+from .services import get_products_from_cache
+from catalog.services import ProductService
 
 
 class ProductUpdateView(LoginRequiredMixin, UpdateView):
@@ -22,7 +24,6 @@ class ProductUpdateView(LoginRequiredMixin, UpdateView):
         if user.has_perm('catalog.can_unpublish_product'):
             return ProductModeratorForm
         raise PermissionDenied
-
 
 
 class ProductCreateView(LoginRequiredMixin, CreateView):
@@ -42,15 +43,36 @@ class ProductListView(ListView):
     model = Product
     template_name = "home_page.html"
 
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        category = Category.objects.all()
+        context['products_list'] = category
+
+        return context
+
+    def get_queryset(self):
+        """ Получаем данные с кэша о продуктах """
+        return get_products_from_cache()
+
 
 class ProductDetailView(DetailView):
     model = Product
     template_name = "product_detail.html"
 
 
-class CategoryListView(ListView):
+class CategoryDetailView(DetailView):
+    """ Сортировка товара по категории  """
     model = Category
     template_name = "category.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data()
+
+        category_id = self.object.id
+        context["products_list"] = ProductService.get_products_category(category_id)
+
+        return context
 
 
 class OrderListView(ListView):
