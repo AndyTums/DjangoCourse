@@ -15,13 +15,16 @@
         <div class="container">
 
             <h3>Наши товары:</h3>
+            {% for category in products_list %}
+            <a  href="{% url 'catalog:category' category.id %}" class="btn btn-secondary text-center">{{ category.name }}</a>
+            {% endfor %}
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
                 {% for product in object_list %}
                 <div class="col">
-                    <div class="card shadow-sm">
+                    <div class="card shadow-sm mt-2">
                         <img src="{{ product.image | media_filter }}" height="250">
                         <div class="card-body">
-                            <h3>{{ product.name }}</h3>
+                            <h3>{{ product.name }}{{ product.category }}</h3>
                             <p class="card-text">{{ product.description }}</p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">

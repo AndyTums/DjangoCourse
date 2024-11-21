@@ -1,73 +1,35 @@
 {% extends 'base.html' %}
+{% load my_tags %}
 {% block content %}
-    <div class="col-10">
-        <div class="text-center" style="margin-top: 150px;">
-            <h1 class="card-title fs-1 pb-2">Категория 1</h1>
-        </div>
-        <div class="row text-center" style="margin-right: -200px;">
-            <div class="col-sm-3 mt-5 ms-5">
-                <div class="card ms-5">
-                    <div class="card-body">
-                        <h5 class="card-title">Товар 1</h5>
-                        <h2 class="card-title">1000р.</h2>
-                        <p class="card-text">Покупай скорее, цена ограниченна только сегодня и только для тебя!</p>
-                        <a href="#" class="btn btn-primary">Купить</a>
+<div class="col-10">
+<div class="album py-5t" style="margin-top: 70px;">
+        <div class="container">
+
+            <h3>Наши товары:</h3>
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
+                {% for product in products_list %}
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <img src="{{ product.image | media_filter }}" height="250">
+                        <div class="card-body">
+                            <h3>{{ product.name }}</h3>
+                            <p class="card-text">{{ product.description }}</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <a href="#">
+                                        <button type="button" class="btn btn-primary">Купить
+                                        </button>
+                                    </a>
+                                    <a href="{% url 'catalog:product_detail' product.id %}">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary">Смотреть</button>
+                                    </a>
+                                </div>
+                                <big class="text-muted">{{ product.price }} р.</big>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-sm-3 mt-5 ms-5">
-                <div class="card ms-5">
-                    <div class="card-body">
-                        <h5 class="card-title">Товар 2</h5>
-                        <h2 class="card-title">1500р.</h2>
-                        <p class="card-text">Покупай скорее, цена ограниченна только сегодня и только для тебя!</p>
-                        <a href="#" class="btn btn-primary">Купить</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-3 mt-5 ms-5">
-                <div class="card ms-5">
-                    <div class="card-body">
-                        <h5 class="card-title">Товар 3</h5>
-                        <h2 class="card-title">2000р.</h2>
-                        <p class="card-text">Покупай скорее, цена ограниченна только сегодня и только для тебя!</p>
-                        <a href="#" class="btn btn-primary">Купить</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-3 mt-5 ms-5">
-                <div class="card ms-5">
-                    <div class="card-body">
-                        <h5 class="card-title">Товар 1</h5>
-                        <h2 class="card-title">1000р.</h2>
-                        <p class="card-text">Покупай скорее, цена ограниченна только сегодня и только для тебя!</p>
-                        <a href="#" class="btn btn-primary">Купить</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-3 mt-5 ms-5">
-                <div class="card ms-5">
-                    <div class="card-body">
-                        <h5 class="card-title">Товар 2</h5>
-                        <h2 class="card-title">1500р.</h2>
-                        <p class="card-text">Покупай скорее, цена ограниченна только сегодня и только для тебя!</p>
-                        <a href="#" class="btn btn-primary">Купить</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-3 mt-5 ms-5">
-                <div class="card ms-5">
-                    <div class="card-body">
-                        <h5 class="card-title">Товар 3</h5>
-                        <h2 class="card-title">2000р.</h2>
-                        <p class="card-text">Покупай скорее, цена ограниченна только сегодня и только для тебя!</p>
-                        <a href="#" class="btn btn-primary">Купить</a>
-                    </div>
-                </div>
-            </div>
-            <div style="margin-top: 100px; margin-left: -100px;">
-                <a href="https://sky.pro/" class="btn btn-primary btn-lg">Перейти на сайт SkyPro</a>
+                {% endfor %}
             </div>
         </div>
-    </div>
 {% endblock %}
